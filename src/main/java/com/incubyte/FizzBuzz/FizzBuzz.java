@@ -12,25 +12,29 @@ public class FizzBuzz {
     }
 
     public String compute() {
-        if(isDivisibleBy(3)) {
-            if(isDivisibleBy(5)) {
-                return "FizzBuzz";
-            }
-            return "Fizz";
-        }
-        if(isDivisibleBy(5)) {
-            return "Buzz";
-        }
-        return String.valueOf(number);
+        return getFizzBuzz(number);
     }
 
-    private boolean isDivisibleBy(int divisor) {
-        return number % divisor == 0;
+    private boolean isDivisibleBy(int dividend, int divisor) {
+        return dividend % divisor == 0;
     }
 
     public void printAll() {
         for (int i = 1; i <= number; i++) {
-            printStream.println(new FizzBuzz(i, printStream).compute());
+            printStream.println(getFizzBuzz(i));
         }
+    }
+
+    private String getFizzBuzz(int i) {
+        if(isDivisibleBy(i, 3)) {
+            if(isDivisibleBy(i, 5)) {
+                return "FizzBuzz";
+            }
+            return "Fizz";
+        }
+        if(isDivisibleBy(i, 5)) {
+            return "Buzz";
+        }
+        return String.valueOf(number);
     }
 }
